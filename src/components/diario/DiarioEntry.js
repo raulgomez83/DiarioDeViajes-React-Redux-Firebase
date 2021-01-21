@@ -1,25 +1,35 @@
 import React from "react";
+import moment from "moment";
+import { useDispatch } from "react-redux";
+import { activeNote } from "../../actions/notes";
 
-export const DiarioEntry = () => {
+export const DiarioEntry = ({ id, date, title, body, url }) => {
+  const noteDate = moment(date);
+  const dispatch = useDispatch();
+  const handleEntryClick = () => {
+    dispatch(activeNote(id, { date, title, body, url }));
+  };
   return (
-    <div className="diario__entry pointer">
-      <div
-        className="diario__entry-picture"
-        style={{
-          backgroundSize: "cover",
-          backgroundImage:
-            "url(https://images.unsplash.com/photo-1570696177405-da064e33a093?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTJ8fG5hdHVyZXxlbnwwfDF8MHxwdXJwbGU%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)",
-        }}
-      ></div>
+    <div
+      className="diario__entry pointer  animate__animated animate__fadeIn animate__faster"
+      onClick={handleEntryClick}
+    >
+      {url && (
+        <div
+          className="diario__entry-picture"
+          style={{
+            backgroundSize: "cover",
+            backgroundImage: `url(${url})`,
+          }}
+        ></div>
+      )}
       <div className=" diario__entry-body">
-        <h5 className="diario__entry-title">Un nuevo día</h5>
-        <p className=" diario__entry-content">
-          Id enim ad aliqua excepteur labore ad ullamco nostrud quis.
-        </p>
+        <h5 className="diario__entry-title">{title}</h5>
+        <p className=" diario__entry-content">{body}</p>
       </div>
       <div className="diario__entry-date-box">
-        <span>Monday</span>
-        <h5>16</h5>
+        <span>{noteDate.format("dddd")}</span>
+        <h5>{noteDate.format("Do")}</h5>
       </div>
     </div>
   );
