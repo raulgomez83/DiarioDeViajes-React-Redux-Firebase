@@ -54,7 +54,7 @@ export const NoteScreen = () => {
         )}
       </div>
       <button className="btn btn-danger" onClick={handleDelete}>
-        Delete
+        Delete Note
       </button>
     </div>
   );

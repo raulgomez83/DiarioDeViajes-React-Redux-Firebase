@@ -1,12 +1,19 @@
 .nothing__main-content {
   align-items: center;
-  background-color: $primary;
+  background-image: url("https://images.unsplash.com/photo-1567910640027-4029c4d8e9e0?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTN8fG9sZCUyMG1hcHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");
+  background-repeat: none;
+  background-size: cover;
   color: whitesmoke;
   display: flex;
   flex-direction: column;
   height: 100vh;
+  text-shadow: 1px 1px 1px black;
   justify-content: center;
-  & p {
+  & h3 {
     text-align: center;
+  }
+  & img {
+    height: 3rem;
+    width: 3rem;
   }
 }
